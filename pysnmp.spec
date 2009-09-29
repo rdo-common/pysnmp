@@ -27,10 +27,6 @@ networking.
 
 %prep
 %setup -q -n %{name}-%{version}a
-#Remove exec permission from example files
-chmod -x examples/*.py
-#Change shebang
-sed -i -e '1d;2i#!/usr/bin/python' examples/*.py
 
 
 %build
@@ -49,13 +45,16 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc CHANGES LICENSE README THANKS TODO examples/ docs/
+%{_bindir}/*%{name}*
 %{python_sitelib}/%{name}/
 %{python_sitelib}/%{name}*.egg-info
 
 
 %changelog
 * Tue Sep 29 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.11-1.a
+- Removed shebang and permission fixing
 - Added new doc files
+- Added scripts to files section
 - Updated to new upstream version 
 
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.9-4
