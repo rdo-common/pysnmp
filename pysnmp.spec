@@ -1,19 +1,19 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pysnmp
-Version:        2.0.9
-Release:        4%{?dist}
+Version:        4.1.11
+Release:        1.a%{?dist}
 Summary:        SNMP engine written in Python
 
 Group:          Development/Libraries
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}a.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
-BuildRequires:  python
-BuildRequires:  python-setuptools-devel
+BuildRequires:  python-devel
+BuildRequires:  python-setuptools
 
 Requires:       net-snmp
 
@@ -26,19 +26,20 @@ networking.
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}a
 #Remove exec permission from example files
 chmod -x examples/*.py
 #Change shebang
 sed -i -e '1d;2i#!/usr/bin/python' examples/*.py
 
+
 %build
-python ./setup.py build
+%{__python} setup.py build
 
 
 %install
 rm -rf %{buildroot}
-python ./setup.py install -O1 --skip-build --root=%{buildroot}
+%{__python} setup.py install -O1 --skip-build --root=%{buildroot}
 
 
 %clean
@@ -47,12 +48,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc CHANGES LICENSE README examples/ html/
+%doc CHANGES LICENSE README THANKS TODO examples/ docs/
 %{python_sitelib}/%{name}/
 %{python_sitelib}/%{name}*.egg-info
 
 
 %changelog
+* Tue Sep 29 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.11-1.a
+- Added new doc files
+- Updated to new upstream version 
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.9-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
