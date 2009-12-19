@@ -1,7 +1,7 @@
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pysnmp
-Version:        4.1.11
+Version:        4.1.12
 Release:        1.a%{?dist}
 Summary:        SNMP engine written in Python
 
@@ -51,6 +51,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Dec 18 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.12-1.a
+- Updated to new upstream version 4.1.12.a
+
 * Tue Sep 29 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.11-1.a
 - Removed shebang and permission fixing
 - Added new doc files
