@@ -1,8 +1,8 @@
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pysnmp
-Version:        4.1.12
-Release:        2.a%{?dist}
+Version:        4.1.14
+Release:        1.a%{?dist}
 Summary:        SNMP engine written in Python
 
 Group:          Development/Libraries
@@ -51,6 +51,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Tue Nov 23 2010 Fabian Affolter <fabian@bernewireless.net> - 4.1.14-1.a
+- Updated to new upstream version 4.1.14.a
+
 * Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 4.1.12-2.a
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
