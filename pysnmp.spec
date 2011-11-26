@@ -1,19 +1,20 @@
 Name:           pysnmp
-Version:        4.1.14
-Release:        2.a%{?dist}
+Version:        4.2.2
+Release:        1.rc1%{?dist}
 Summary:        SNMP engine written in Python
 
 Group:          Development/Libraries
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}a.tar.gz
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}rc1.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 
 Requires:       net-snmp
+Requires:       python-pyasn1
 
 %description
 This is a Python implementation of SNMP v.1/v.2c engine. It's
@@ -24,7 +25,7 @@ networking.
 
 
 %prep
-%setup -q -n %{name}-%{version}a
+%setup -q -n %{name}-%{version}rc1
 
 
 %build
@@ -49,19 +50,23 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Nov 26 2011 Fabian Affolter <mail@fabian-affolter.ch> - 4.2.2-1.rc1
+- Updated to new upstream version 4.2.2rc1
+- Updated BR (#727395)
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.1.14-2.a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Tue Nov 23 2010 Fabian Affolter <fabian@bernewireless.net> - 4.1.14-1.a
+* Tue Nov 23 2010 Fabian Affolter <mail@fabian-affolter.ch> - 4.1.14-1.a
 - Updated to new upstream version 4.1.14.a
 
 * Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 4.1.12-2.a
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
-* Fri Dec 18 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.12-1.a
+* Fri Dec 18 2009 Fabian Affolter <mail@fabian-affolter.ch> - 4.1.12-1.a
 - Updated to new upstream version 4.1.12.a
 
-* Tue Sep 29 2009 Fabian Affolter <fabian@bernewireless.net> - 4.1.11-1.a
+* Tue Sep 29 2009 Fabian Affolter <mail@fabian-affolter.ch> - 4.1.11-1.a
 - Removed shebang and permission fixing
 - Added new doc files
 - Added scripts to files section
@@ -73,9 +78,9 @@ rm -rf %{buildroot}
 * Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Wed Jan 28 2008 Fabian Affolter <fabian@bernewireless.net> - 2.0.9-2
+* Wed Jan 28 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-2
 - Changed license to BSD (#478603)
 - Removed duplicated content, removed examples subpackage
 
-* Thu Jan 01 2008 Fabian Affolter <fabian@bernewireless.net> - 2.0.9-1
+* Thu Jan 01 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-1
 - Initial spec for Fedora
