@@ -1,6 +1,6 @@
 Name:           pysnmp
 Version:        4.2.2
-Release:        1.rc1%{?dist}
+Release:        1.rc1%{?dist}.1
 Summary:        SNMP engine written in Python
 
 Group:          Development/Libraries
@@ -50,6 +50,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.2.2-1.rc1.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Sat Nov 26 2011 Fabian Affolter <mail@fabian-affolter.ch> - 4.2.2-1.rc1
 - Updated to new upstream version 4.2.2rc1
 - Updated BR (#727395)
