@@ -1,13 +1,12 @@
 Name:           pysnmp
-Version:        4.2.2
-Release:        1.rc1%{?dist}.2
+Version:        4.2.3
+Release:        1%{?dist}
 Summary:        SNMP engine written in Python
 
 Group:          Development/Libraries
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}rc1.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -23,33 +22,25 @@ from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
-
 %prep
 %setup -q -n %{name}-%{version}rc1
-
 
 %build
 %{__python} setup.py build
 
-
 %install
-rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
 
-
-%clean
-rm -rf %{buildroot}
-
-
 %files
-%defattr(-,root,root,-)
 %doc CHANGES LICENSE README THANKS TODO examples/ docs/
 %{_bindir}/*%{name}*
 %{python_sitelib}/%{name}/
 %{python_sitelib}/%{name}*.egg-info
 
-
 %changelog
+* Sat Nov 10 2012 Fabian Affolter <mail@fabian-affolter.ch> - 4.2.3-1
+- Updated to new upstream version 4.2.3
+
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.2.2-1.rc1.2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
