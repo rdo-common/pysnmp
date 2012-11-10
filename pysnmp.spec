@@ -23,7 +23,7 @@ PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
 %prep
-%setup -q -n %{name}-%{version}rc1
+%setup -q
 
 %build
 %{__python} setup.py build
