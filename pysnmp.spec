@@ -1,9 +1,8 @@
 Name:           pysnmp
-Version:        4.2.4
-Release:        2%{?dist}
+Version:        4.2.5
+Release:        1%{?dist}
 Summary:        SNMP engine written in Python
 
-Group:          Development/Libraries
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -26,18 +25,21 @@ networking.
 %setup -q
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 %install
-%{__python} setup.py install -O1 --skip-build --root=%{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
 
 %files
 %doc CHANGES LICENSE README THANKS TODO examples/ docs/
 %{_bindir}/*%{name}*
-%{python_sitelib}/%{name}/
-%{python_sitelib}/%{name}*.egg-info
+%{python2_sitelib}/%{name}/
+%{python2_sitelib}/%{name}*.egg-info
 
 %changelog
+* Fri Oct 18 2013 Fabian Affolter <mail@fabian-affolter.ch> - 4.2.5-1
+- Updated to new upstream version 4.2.5
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.2.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
@@ -84,9 +86,9 @@ networking.
 * Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Wed Jan 28 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-2
+* Mon Jan 28 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-2
 - Changed license to BSD (#478603)
 - Removed duplicated content, removed examples subpackage
 
-* Thu Jan 01 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-1
+* Tue Jan 01 2008 Fabian Affolter <mail@fabian-affolter.ch> - 2.0.9-1
 - Initial spec for Fedora
