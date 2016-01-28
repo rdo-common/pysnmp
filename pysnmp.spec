@@ -1,7 +1,9 @@
+%global sum An SNMP engine written in Python
+
 Name:           pysnmp
-Version:        4.2.5
-Release:        3%{?dist}
-Summary:        SNMP engine written in Python
+Version:        4.3.1
+Release:        1%{?dist}
+Summary:        %{sum}
 
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
@@ -9,6 +11,7 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python3-devel
 BuildRequires:  python-setuptools
 
 Requires:       net-snmp
@@ -21,22 +24,60 @@ from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
+%package -n python2-%{name}
+Summary:        %{sum}
+Requires:       python2-pyasn1
+%{?python_provide:%python_provide python2-%{name}}
+
+%description -n python2-%{name}
+This is a Python implementation of SNMP v.1/v.2c engine. It's
+general functionality is to assemble/disassemble SNMP messages
+from/into given SNMP Object IDs along with associated values.
+PySNMP also provides a few transport methods specific to TCP/IP
+networking.
+
+%package -n python3-%{name}
+Summary:        %{sum}
+Requires:       python3-pyasn1
+%{?python_provide:%python_provide python3-%{name}}
+
+%description -n python3-%{name}
+This is a Python implementation of SNMP v.1/v.2c engine. It's
+general functionality is to assemble/disassemble SNMP messages
+from/into given SNMP Object IDs along with associated values.
+PySNMP also provides a few transport methods specific to TCP/IP
+networking.
+
 %prep
-%setup -q
+%autosetup -n %{name}-%{version}
 
 %build
-%{__python2} setup.py build
+%py2_build
+%py3_build
 
 %install
-%{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
+%py2_install
+%py3_install
 
-%files
-%doc CHANGES LICENSE README THANKS TODO examples/ docs/
+%files -n python2-%{name}
+%doc CHANGES README THANKS TODO examples/ docs/
+%license LICENSE
 %{_bindir}/*%{name}*
 %{python2_sitelib}/%{name}/
 %{python2_sitelib}/%{name}*.egg-info
 
+%files -n python3-%{name}
+%doc CHANGES README THANKS TODO examples/ docs/
+%license LICENSE
+%{_bindir}/*%{name}*
+%{python3_sitelib}/%{name}/
+%{python3_sitelib}/%{name}*.egg-info
+
 %changelog
+* Thu Jan 28 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.1-1
+- Add py3 support (rhbz#1282245)
+- Updated to new upstream version 4.3.1 (rhbz#1145004)
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.2.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
