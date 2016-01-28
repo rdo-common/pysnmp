@@ -62,14 +62,12 @@ networking.
 %files -n python2-%{name}
 %doc CHANGES.txt README.txt THANKS.txt TODO.txt examples/ docs/
 %license LICENSE.txt
-%{_bindir}/*%{name}*
 %{python2_sitelib}/%{name}/
 %{python2_sitelib}/%{name}*.egg-info
 
 %files -n python3-%{name}
 %doc CHANGES.txt README.txt THANKS.txt TODO.txt examples/ docs/
 %license LICENSE.txt
-%{_bindir}/*%{name}*
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*.egg-info
 
