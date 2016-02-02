@@ -2,7 +2,7 @@
 
 Name:           pysnmp
 Version:        4.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
