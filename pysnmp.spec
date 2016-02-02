@@ -17,6 +17,9 @@ BuildRequires:  python-setuptools
 Requires:       net-snmp
 Requires:       python-pyasn1
 
+Provides:       pysnmp = %{version}-%{release}
+Obsoletes:      pysnmp < 4.3.1
+
 %description
 This is a Python implementation of SNMP v.1/v.2c engine. It's
 general functionality is to assemble/disassemble SNMP messages
@@ -27,7 +30,7 @@ networking.
 %package -n python2-%{name}
 Summary:        %{sum}
 Requires:       python2-pyasn1
-%{?python_provide:%python_provide pysnmp}
+%{?python_provide:%python_provide python2-%{name}}
 
 %description -n python2-%{name}
 This is a Python implementation of SNMP v.1/v.2c engine. It's
