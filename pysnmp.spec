@@ -27,7 +27,7 @@ networking.
 %package -n python2-%{name}
 Summary:        %{sum}
 Requires:       python2-pyasn1
-%{?python_provide:%python_provide python2-%{name}}
+%{?python_provide:%python_provide pysnmp}
 
 %description -n python2-%{name}
 This is a Python implementation of SNMP v.1/v.2c engine. It's
@@ -72,6 +72,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Tue Feb 02 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.1-2
+- Fix package name
+
 * Thu Jan 28 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.1-1
 - Add py3 support (rhbz#1282245)
 - Updated to new upstream version 4.3.1 (rhbz#1145004)
