@@ -1,8 +1,8 @@
 %global sum An SNMP engine written in Python
 
 Name:           pysnmp
-Version:        4.3.1
-Release:        2%{?dist}
+Version:        4.3.2
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -17,9 +17,6 @@ BuildRequires:  python-setuptools
 Requires:       net-snmp
 Requires:       python-pyasn1
 
-Provides:       pysnmp = %{version}-%{release}
-Obsoletes:      pysnmp < 4.3.1
-
 %description
 This is a Python implementation of SNMP v.1/v.2c engine. It's
 general functionality is to assemble/disassemble SNMP messages
@@ -31,6 +28,8 @@ networking.
 Summary:        %{sum}
 Requires:       python2-pyasn1
 %{?python_provide:%python_provide python2-%{name}}
+Provides:       pysnmp = %{version}-%{release}
+Obsoletes:      pysnmp < 4.3.1
 
 %description -n python2-%{name}
 This is a Python implementation of SNMP v.1/v.2c engine. It's
@@ -75,6 +74,10 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Mon Jun 27 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.2-1
+- Move provides/obsoletes
+- Updated to new upstream version 4.3.2
+
 * Tue Feb 02 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.1-2
 - Fix package name
 
