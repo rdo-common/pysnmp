@@ -2,7 +2,7 @@
 
 Name:           pysnmp
 Version:        4.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -74,6 +74,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.3.2-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Mon Jun 27 2016 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.2-1
 - Move provides/obsoletes
 - Updated to new upstream version 4.3.2
