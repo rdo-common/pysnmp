@@ -1,3 +1,7 @@
+%if 0%{?fedora}
+%global with_python3 1
+%endif
+
 Name:           pysnmp
 Version:        4.3.9
 Release:        1%{?dist}
@@ -8,13 +12,6 @@ URL:            http://pysnmp.sourceforge.net/
 Source0:        https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python2-devel
-BuildRequires:  python3-devel
-BuildRequires:  python-setuptools
-
-Requires:       net-snmp
-Requires:       python-pyasn1
-
 %description
 This is a Python implementation of SNMP v.1/v.2c engine. It's
 general functionality is to assemble/disassemble SNMP messages
@@ -24,7 +21,10 @@ networking.
 
 %package -n python2-%{name}
 Summary:        %{summary}
+BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 Requires:       python2-pyasn1
+Requires:       net-snmp
 %{?python_provide:%python_provide python2-%{name}}
 Provides:       pysnmp = %{version}-%{release}
 Obsoletes:      pysnmp < 4.3.1
@@ -36,8 +36,11 @@ from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
+%if 0%{?with_python3}
 %package -n python3-%{name}
 Summary:        %{summary}
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 Requires:       python3-pyasn1
 %{?python_provide:%python_provide python3-%{name}}
 
@@ -47,17 +50,22 @@ general functionality is to assemble/disassemble SNMP messages
 from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
+%endif
 
 %prep
 %autosetup -n %{name}-%{version}
 
 %build
 %py2_build
+%if 0%{?with_python3}
 %py3_build
+%endif
 
 %install
 %py2_install
+%if 0%{?with_python3}
 %py3_install
+%endif
 
 %files -n python2-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
@@ -65,11 +73,13 @@ networking.
 %{python2_sitelib}/%{name}/
 %{python2_sitelib}/%{name}*.egg-info
 
+%if 0%{?with_python3}
 %files -n python3-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
 %license LICENSE.txt
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*.egg-info
+%endif
 
 %changelog
 * Thu Jul 27 2017 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.9-1
