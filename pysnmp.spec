@@ -1,13 +1,13 @@
 %global sum An SNMP engine written in Python
 
 Name:           pysnmp
-Version:        4.3.2
-Release:        3%{?dist}
+Version:        4.3.3
+Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -74,6 +74,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Sun Feb 05 2017 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.3-1
+- Updated to new upstream version 4.3.3
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 4.3.2-3
 - Rebuild for Python 3.6
 
