@@ -1,9 +1,7 @@
-%global sum An SNMP engine written in Python
-
 Name:           pysnmp
-Version:        4.3.3
+Version:        4.3.4
 Release:        1%{?dist}
-Summary:        %{sum}
+Summary:        An SNMP engine written in Python
 
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
@@ -25,7 +23,7 @@ PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
 %package -n python2-%{name}
-Summary:        %{sum}
+Summary:        %{summary}
 Requires:       python2-pyasn1
 %{?python_provide:%python_provide python2-%{name}}
 Provides:       pysnmp = %{version}-%{release}
@@ -39,7 +37,7 @@ PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
 %package -n python3-%{name}
-Summary:        %{sum}
+Summary:        %{summary}
 Requires:       python3-pyasn1
 %{?python_provide:%python_provide python3-%{name}}
 
@@ -74,6 +72,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Sat Mar 25 2017 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.4-1
+- Updated to new upstream version 4.3.4
+
 * Sun Feb 05 2017 Fabian Affolter <mail@fabian-affolter.ch> - 4.3.3-1
 - Updated to new upstream version 4.3.3
 
