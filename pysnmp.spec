@@ -60,13 +60,13 @@ networking.
 
 %files -n python2-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
-%license LICENSE.txt
+%license LICENSE.rst
 %{python2_sitelib}/%{name}/
 %{python2_sitelib}/%{name}*.egg-info
 
 %files -n python3-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
-%license LICENSE.txt
+%license LICENSE.rst
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*.egg-info
 
