@@ -71,7 +71,7 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
-* Mon Jan 07 2018 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.8-1
+* Mon Jan 07 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.8-1
 - Updated to new upstream version 4.4.8
 
 * Thu Nov 01 2018 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.6-1
