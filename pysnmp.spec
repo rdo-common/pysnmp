@@ -1,6 +1,6 @@
 Name:           pysnmp
-Version:        4.4.8
-Release:        2%{?dist}
+Version:        4.4.9
+Release:        1%{?dist}
 Summary:        An SNMP engine written in Python
 
 License:        BSD
@@ -71,6 +71,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Sun Feb 10 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.9-1
+- Updated to new upstream version 4.4.9
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.4.8-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
