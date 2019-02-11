@@ -1,6 +1,6 @@
 Name:           pysnmp
 Version:        4.4.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An SNMP engine written in Python
 
 License:        BSD
@@ -8,27 +8,12 @@ URL:            http://pysnmp.sourceforge.net/
 Source0:        https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python2-devel
 BuildRequires:  python3-devel
-BuildRequires:  python2-setuptools
+BuildRequires:  python3-setuptools
 
 Requires:       net-snmp
 
 %description
-This is a Python implementation of SNMP v.1/v.2c engine. It's
-general functionality is to assemble/disassemble SNMP messages
-from/into given SNMP Object IDs along with associated values.
-PySNMP also provides a few transport methods specific to TCP/IP
-networking.
-
-%package -n python2-%{name}
-Summary:        %{summary}
-Requires:       python2-pyasn1
-%{?python_provide:%python_provide python2-%{name}}
-Provides:       pysnmp = %{version}-%{release}
-Obsoletes:      pysnmp < 4.3.1
-
-%description -n python2-%{name}
 This is a Python implementation of SNMP v.1/v.2c engine. It's
 general functionality is to assemble/disassemble SNMP messages
 from/into given SNMP Object IDs along with associated values.
@@ -51,18 +36,10 @@ networking.
 %autosetup -n %{name}-%{version}
 
 %build
-%py2_build
 %py3_build
 
 %install
-%py2_install
 %py3_install
-
-%files -n python2-%{name}
-%doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
-%license LICENSE.rst
-%{python2_sitelib}/%{name}/
-%{python2_sitelib}/%{name}*.egg-info
 
 %files -n python3-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
@@ -71,6 +48,10 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Mon Feb 11 2019 Miro Hrončok <mhroncok@redhat.com> - 4.4.9-2
+- Subpackage python2-pysnmp has been removed
+  See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
+
 * Sun Feb 10 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.9-1
 - Updated to new upstream version 4.4.9
 
