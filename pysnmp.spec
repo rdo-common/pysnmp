@@ -1,3 +1,11 @@
+%if 0%{?fedora} || 0%{?rhel} > 7
+%bcond_with python2
+%bcond_without python3
+%else
+%bcond_without python2
+%bcond_with python3
+%endif
+
 Name:           pysnmp
 Version:        4.4.9
 Release:        2%{?dist}
@@ -8,8 +16,14 @@ URL:            http://pysnmp.sourceforge.net/
 Source0:        https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
+%if %{with python2}
+BuildRequires:  python2-devel
+BuildRequires:  python2-setuptools
+%endif
+%if %{with python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+%endif
 
 Requires:       net-snmp
 
@@ -20,6 +34,23 @@ from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
 
+%if %{with python2}
+%package -n python2-%{name}
+Summary:        %{summary}
+Requires:       python2-pyasn1
+%{?python_provide:%python_provide python2-%{name}}
+Provides:       pysnmp = %{version}-%{release}
+Obsoletes:      pysnmp < 4.3.1
+
+%description -n python2-%{name}
+This is a Python implementation of SNMP v.1/v.2c engine. It's
+general functionality is to assemble/disassemble SNMP messages
+from/into given SNMP Object IDs along with associated values.
+PySNMP also provides a few transport methods specific to TCP/IP
+networking.
+%endif
+
+%if %{with python3}
 %package -n python3-%{name}
 Summary:        %{summary}
 Requires:       python3-pyasn1
@@ -31,21 +62,42 @@ general functionality is to assemble/disassemble SNMP messages
 from/into given SNMP Object IDs along with associated values.
 PySNMP also provides a few transport methods specific to TCP/IP
 networking.
+%endif
 
 %prep
 %autosetup -n %{name}-%{version}
 
 %build
+%if %{with python2}
+%py2_build
+%endif
+%if %{with python3}
 %py3_build
+%endif
 
 %install
+%if %{with python2}
+%py2_install
+%endif
+%if %{with python3}
 %py3_install
+%endif
 
+%if %{with python2}
+%files -n python2-%{name}
+%doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
+%license LICENSE.rst
+%{python2_sitelib}/%{name}/
+%{python2_sitelib}/%{name}*.egg-info
+%endif
+
+%if %{with python3}
 %files -n python3-%{name}
 %doc CHANGES.txt README.md THANKS.txt TODO.txt examples/ docs/
 %license LICENSE.rst
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*.egg-info
+%endif
 
 %changelog
 * Mon Feb 11 2019 Miro Hrončok <mhroncok@redhat.com> - 4.4.9-2
