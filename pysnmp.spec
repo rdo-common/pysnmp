@@ -1,15 +1,12 @@
 Name:           pysnmp
 Version:        4.4.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An SNMP engine written in Python
 
 License:        BSD
 URL:            http://pysnmp.sourceforge.net/
 Source0:        https://github.com/etingof/pysnmp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 Requires:       net-snmp
 
@@ -22,7 +19,9 @@ networking.
 
 %package -n python3-%{name}
 Summary:        %{summary}
-Requires:       python3-pyasn1
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 %{?python_provide:%python_provide python3-%{name}}
 
 %description -n python3-%{name}
@@ -48,6 +47,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Sun Jun 02 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.9-3
+- Fix broken dependency (rhbz#1703674)
+
 * Mon Feb 11 2019 Miro Hrončok <mhroncok@redhat.com> - 4.4.9-2
 - Subpackage python2-pysnmp has been removed
   See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
