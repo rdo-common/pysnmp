@@ -1,6 +1,6 @@
 Name:           pysnmp
-Version:        4.4.9
-Release:        3%{?dist}
+Version:        4.4.10
+Release:        1%{?dist}
 Summary:        An SNMP engine written in Python
 
 License:        BSD
@@ -47,6 +47,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Wed Jul 31 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.10-1
+- Updated to new upstream version 4.4.10
+
 * Sun Jun 02 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.9-3
 - Fix broken dependency (rhbz#1703674)
 
