@@ -51,11 +51,11 @@ networking.
 * Fri Aug 16 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.11-1
 - Updated to new upstream version 4.4.11
 
-* Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.4.9-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
-
 * Wed Jul 31 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.10-1
 - Updated to new upstream version 4.4.10
+
+* Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.4.9-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
 * Sun Jun 02 2019 Fabian Affolter <mail@fabian-affolter.ch> - 4.4.9-3
 - Fix broken dependency (rhbz#1703674)
