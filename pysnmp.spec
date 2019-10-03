@@ -1,6 +1,6 @@
 Name:           pysnmp
 Version:        4.4.11
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        An SNMP engine written in Python
 
@@ -48,6 +48,9 @@ networking.
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
+* Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 4.4.11-3
+- Rebuilt for Python 3.8.0rc1 (#1748018)
+
 * Mon Aug 19 2019 Miro Hrončok <mhroncok@redhat.com> - 4.4.11-2
 - Rebuilt for Python 3.8
 
