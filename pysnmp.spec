@@ -1,3 +1,7 @@
+%{?python_enable_dependency_generator}
+# pycryptodomex is optional.
+%global __requires_exclude .*pycryptodomex.*$
+
 Name:           pysnmp
 Version:        4.4.12
 Release:        1%{?dist}
